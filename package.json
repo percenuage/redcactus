@@ -1,6 +1,6 @@
 {
   "name": "redcactus",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple server status for Express Middleware",
   "main": "index.js",
   "scripts": {
