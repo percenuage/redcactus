@@ -1,0 +1,33 @@
+{
+  "name": "redcactus",
+  "version": "0.0.1",
+  "description": "Simple server status for Express Middleware",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/percenuage/redcactus.git"
+  },
+  "keywords": [
+    "status",
+    "node",
+    "express",
+    "middleware",
+    "stats",
+    "git",
+    "uptime",
+    "version"
+  ],
+  "author": "Axel Gendillard <agendillard+tech@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/percenuage/redcactus/issues"
+  },
+  "homepage": "https://github.com/percenuage/redcactus#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}
