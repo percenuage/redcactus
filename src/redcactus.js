@@ -6,9 +6,9 @@ const getLastCommit = util.promisify(git.getLastCommit);
 const startTime = moment();
 
 const serverStatus = () => {
-    const {version, description} = require('../package');
+    const {version, description, name} = require('../package');
     return {
-        status: 'up', version, description,
+        status: 'up', version, description, name,
         started_at: startTime.format(),
         uptime: moment().diff(startTime, 'seconds'),
         uptime_human: startTime.fromNow()

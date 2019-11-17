@@ -14,6 +14,7 @@ describe('ServerStatus Suite', () => {
     it('Should has properties', () => {
         const packageJson = require('../package');
         expect(server).toHaveProperty('status', 'up');
+        expect(server).toHaveProperty('name', packageJson.name);
         expect(server).toHaveProperty('description', packageJson.description);
         expect(server).toHaveProperty('version', packageJson.version);
         expect(server).toHaveProperty('uptime');
