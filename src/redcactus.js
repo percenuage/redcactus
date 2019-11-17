@@ -5,6 +5,13 @@ const git = require('git-last-commit');
 const getLastCommit = util.promisify(git.getLastCommit);
 const startTime = moment();
 
+const status = async () => {
+    return {
+        server: serverStatus(),
+        git: await gitStatus()
+    }
+};
+
 const serverStatus = () => {
     const {version, description, name} = require('../package');
     return {
@@ -20,5 +27,4 @@ const gitStatus = async () => {
     return {branch, subject, author, sha: shortHash};
 };
 
-module.exports.serverStatus = serverStatus;
-module.exports.gitStatus = gitStatus;
+module.exports.status = status;

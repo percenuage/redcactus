@@ -1,43 +1,45 @@
 const redcactus = require('../src/redcactus');
 
-describe('ServerStatus Suite', () => {
-    let server;
-    beforeEach(() => {
-        server = redcactus.serverStatus();
+describe('Status Suite', () => {
+    let status;
+    beforeAll(async () => {
+        status = await redcactus.status();
+    });
+
+    it('Status should be an object', () => {
+        console.log(status);
+        expect(typeof status).toBe('object');
+    });
+
+    it('Status should has properties', () => {
+        expect(status).toHaveProperty('server');
+        expect(status).toHaveProperty('git');
+    });
+
+    it('Server should be an object', () => {
+        expect(typeof status.server).toBe('object');
     });
 
     it('Should be an object', () => {
-        console.log(server);
-        expect(typeof server).toBe('object');
+        expect(typeof status.git).toBe('object');
     });
 
-    it('Should has properties', () => {
+    it('Server should has properties', () => {
         const packageJson = require('../package');
-        expect(server).toHaveProperty('status', 'up');
-        expect(server).toHaveProperty('name', packageJson.name);
-        expect(server).toHaveProperty('description', packageJson.description);
-        expect(server).toHaveProperty('version', packageJson.version);
-        expect(server).toHaveProperty('uptime');
-        expect(server).toHaveProperty('uptime_human');
-        expect(server).toHaveProperty('started_at');
-    });
-});
-
-describe('GitStatus Suite', () => {
-    let git;
-    beforeEach(async () => {
-        git = await redcactus.gitStatus();
-    });
-
-    it('Should be an object', () => {
-        console.log(git);
-        expect(typeof git).toBe('object');
+        expect(status.server).toHaveProperty('status', 'up');
+        expect(status.server).toHaveProperty('name', packageJson.name);
+        expect(status.server).toHaveProperty('description', packageJson.description);
+        expect(status.server).toHaveProperty('version', packageJson.version);
+        expect(status.server).toHaveProperty('uptime');
+        expect(status.server).toHaveProperty('uptime_human');
+        expect(status.server).toHaveProperty('started_at');
     });
 
     it('Should has properties', () => {
-        expect(git).toHaveProperty('branch');
-        expect(git).toHaveProperty('sha');
-        expect(git).toHaveProperty('subject');
-        expect(git).toHaveProperty('author');
+        expect(status.git).toHaveProperty('branch');
+        expect(status.git).toHaveProperty('sha');
+        expect(status.git).toHaveProperty('subject');
+        expect(status.git).toHaveProperty('author');
     });
+
 });
