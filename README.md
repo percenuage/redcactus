@@ -1,4 +1,4 @@
-# Redcastus
+# Redcactus
 
 Simple server status for Express Middleware
 
