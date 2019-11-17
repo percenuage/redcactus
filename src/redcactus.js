@@ -17,7 +17,8 @@ const status = async () => {
 };
 
 const serverStatus = () => {
-    const {version, description, name} = require('../package');
+    const root = process.cwd();
+    const {version, description, name} = require(root + '/package');
     return {
         status: 'up', name, version, description,
         started_at: startTime.format(),
