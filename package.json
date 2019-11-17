@@ -19,7 +19,8 @@
     "stats",
     "git",
     "uptime",
-    "version"
+    "version",
+    "commit"
   ],
   "author": "Axel Gendillard <agendillard+tech@gmail.com>",
   "license": "MIT",
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/percenuage/redcactus#readme",
   "private": false,
   "dependencies": {
+    "git-last-commit": "^1.0.0",
     "moment": "^2.24.0"
   },
   "devDependencies": {

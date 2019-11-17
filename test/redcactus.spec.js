@@ -6,12 +6,12 @@ describe('ServerStatus Suite', () => {
         server = redcactus.serverStatus();
     });
 
-    test('Should be an object', () => {
+    it('Should be an object', () => {
         console.log(server);
         expect(typeof server).toBe('object');
     });
 
-    test('Should has properties', () => {
+    it('Should has properties', () => {
         const packageJson = require('../package');
         expect(server).toHaveProperty('status', 'up');
         expect(server).toHaveProperty('description', packageJson.description);
@@ -24,17 +24,19 @@ describe('ServerStatus Suite', () => {
 
 describe('GitStatus Suite', () => {
     let git;
-    beforeEach(() => {
-        git = redcactus.gitStatus();
+    beforeEach(async () => {
+        git = await redcactus.gitStatus();
     });
 
-    test('Should be an object', () => {
+    it('Should be an object', () => {
         console.log(git);
         expect(typeof git).toBe('object');
     });
 
-    test('Should has properties', () => {
+    it('Should has properties', () => {
         expect(git).toHaveProperty('branch');
         expect(git).toHaveProperty('sha');
+        expect(git).toHaveProperty('subject');
+        expect(git).toHaveProperty('author');
     });
 });
