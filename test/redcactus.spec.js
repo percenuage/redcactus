@@ -42,4 +42,9 @@ describe('Status Suite', () => {
         expect(status.git).toHaveProperty('author');
     });
 
+    it('Should disable git status with options', async () => {
+        status = await redcactus.status({ disableGitStatus: true });
+        expect(status.git).toBeUndefined();
+    });
+
 });

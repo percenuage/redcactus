@@ -5,20 +5,20 @@ const git = require('git-last-commit');
 const getLastCommit = util.promisify(git.getLastCommit);
 const startTime = moment();
 
-const middleware = () => {
-    return async (req, res) => res.json(await status());
-};
+const middleware = options => async (req, res) => res.json(await status(options));
 
-const status = async () => {
-    return {
-        server: serverStatus(),
-        git: await gitStatus()
+const status = async (options = {}) => {
+    const { disableGitStatus } = options;
+    const res = { server: serverStatus() }
+    if (!disableGitStatus) {
+        res.git = await gitStatus();
     }
+    return res;
 };
 
 const serverStatus = () => {
     const root = process.cwd();
-    const {version, description, name} = require(root + '/package');
+    const { version, description, name } = require(root + '/package');
     return {
         status: 'up', name, version, description,
         started_at: startTime.format(),
@@ -28,8 +28,8 @@ const serverStatus = () => {
 };
 
 const gitStatus = async () => {
-    const {shortHash, subject, author, branch} = await getLastCommit();
-    return {sha: shortHash, branch, subject, author};
+    const { shortHash, subject, author, branch } = await getLastCommit();
+    return { sha: shortHash, branch, subject, author };
 };
 
 module.exports = middleware;
