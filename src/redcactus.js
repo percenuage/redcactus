@@ -8,9 +8,9 @@ const startTime = moment();
 const middleware = options => async (req, res) => res.json(await status(options));
 
 const status = async (options = {}) => {
-    const { disableGitStatus } = options;
+    const { enableGitStatus } = options;
     const res = { server: serverStatus() }
-    if (!disableGitStatus) {
+    if (enableGitStatus) {
         res.git = await gitStatus();
     }
     return res;
